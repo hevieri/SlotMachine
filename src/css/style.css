@@ -1,0 +1,122 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+nav{
+  height: 75px;
+  background-color: #2d08ff;
+  margin-bottom: 50px;
+  background-image: url('src/assets/img/nav.jpg');
+  
+}
+
+/* BODY */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('src/assets/img/fondo.jpg');
+  background-size: cover;    /* La imagen cubre toda el área disponible */
+  background-position: center; /* Centra la imagen en la página */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+   width: 100%; /* Abarca todo el ancho */
+  height: 100%;
+ 
+     
+}
+
+/* HUD del juego */
+.hud {
+  display: flex;
+  justify-content: space-between; /* Espacio entre los elementos */
+  align-items: center; /* Alinea los elementos verticalmente */
+  width: 100%; /* Opcional, para asegurarte que ocupa todo el ancho */
+  padding: 10px; /* Espaciado opcional */
+  background-image: url('src/assets/img/nav.jpg');
+  width: 350px;
+  margin: auto;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.score, .rewards {
+  font-size: 18px; /* Tamaño de fuente */
+  color: white; /* Color de texto */
+}
+
+
+
+/* Contenedor de las cajas */
+.container {
+  display: flex;
+  justify-content: center;  /* Centra las cajas horizontalmente */
+  align-items: center;      /* Alinea las cajas verticalmente */
+  width: 100%;              /* El contenedor ocupará todo el ancho disponible */
+  margin: auto;             /* Centra el contenedor en la página */
+  padding: 20px 0;          /* Agrega un poco de espacio arriba y abajo */
+  margin-top: 25px;
+}
+
+/* Estilo de cada caja */
+.caja {
+  width: 150px;                  /* Ancho de la caja más grande */
+  height: 150px;                 /* Alto de la caja más grande */
+  background-color: #4CAF50;     /* Color de fondo */
+  display: flex;
+  justify-content: center;       /* Centra el contenido de la caja horizontalmente */
+  align-items: center;           /* Centra el contenido de la caja verticalmente */
+  color: white;                  /* Color del texto */
+  border-radius: 10px;           /* Bordes redondeados */
+  box-shadow: 0 0 10px rgba(255, 6, 6, 0.555); /* Sombra para darle más efecto */
+  font-size: 18px;               /* Tamaño del texto */
+  margin: 0 10px;                /* Espacio entre las cajas */
+}
+
+/* Hacemos que las imágenes se ajusten al tamaño de las cajas */
+.caja img {
+  width: 100%;  /* Ajusta la imagen para que ocupe todo el ancho de la caja */
+  height: 100%; /* Ajusta la imagen para que ocupe todo el alto de la caja */
+  object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+  border-radius: 8px; /* Bordes redondeados de la imagen */
+}
+
+
+
+/* Botón PLAY */
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 150px;
+  height: 50px;
+  background-color: #2d08ff;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  background-image: url('src/assets/img/nav.jpg');
+  
+}
+
+
+
+
+footer{
+  height: 75px;
+  background-color: #2d08ff;
+  margin-top: 50px;
+  background-image: url('src/assets/img/nav.jpg');
+  color: white;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+  
