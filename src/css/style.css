@@ -63,7 +63,7 @@ body {
 .caja {
   width: 150px;                  /* Ancho de la caja más grande */
   height: 150px;                 /* Alto de la caja más grande */
-  background-color: #4CAF50;     /* Color de fondo */
+  background-color: #ffffff;     /* Color de fondo */
   display: flex;
   justify-content: center;       /* Centra el contenido de la caja horizontalmente */
   align-items: center;           /* Centra el contenido de la caja verticalmente */
@@ -71,7 +71,11 @@ body {
   border-radius: 10px;           /* Bordes redondeados */
   box-shadow: 0 0 10px rgba(255, 6, 6, 0.555); /* Sombra para darle más efecto */
   font-size: 18px;               /* Tamaño del texto */
-  margin: 0 10px;                /* Espacio entre las cajas */
+  margin: 0 10px;   
+  overflow: hidden;             /* Espacio entre las cajas */
+  background-image: url('src/assets/img/dotbackground.png');
+  background-size: 100% 100%;
+  /* opacity: 0.7; */
 }
 
 /* Hacemos que las imágenes se ajusten al tamaño de las cajas */
@@ -120,3 +124,37 @@ footer{
   bottom: 0;
 }
   
+/****Control de flujo de cajas***/
+
+.box-img{
+  width:100%;
+  height:100%;
+}
+
+ .transition-one {
+  background-size: cover;
+  background-position: center;
+  animation: slide 0.8s infinite;
+  opacity: 1!important;
+ }
+ .transition-two {
+  background-size: cover;
+  background-position: center;
+  animation: slide 0.85s infinite;
+  opacity: 1!important;
+ }
+ .transition-three {
+  background-size: cover;
+  background-position: center;
+  animation: slide 0.89s infinite;
+  opacity: 1!important;
+ }
+
+ /* Animación */
+@keyframes slide {
+  0% { transform: translateY(0%); }
+  45% { transform: translateY(0%); }  /* Muestra la primera imagen */
+  50% { transform: translateY(-100%); } /* Transición a la segunda imagen */
+  95% { transform: translateY(-100%); } /* Muestra la segunda imagen */
+  100% { transform: translateY(0%); }   /* Regresa a la primera imagen */
+}

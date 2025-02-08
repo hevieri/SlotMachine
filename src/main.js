@@ -11,6 +11,9 @@ import './css/style.css';
 const MAXIMUM_AMOUNT_PER_ROUND_BOX1 = 25;
 const MAXIMUM_AMOUNT_PER_ROUND_BOX2 = 35;
 const MAXIMUM_AMOUNT_PER_ROUND_BOX3 = 40;
+const INTERVAL_TIME_ONE   = 800
+const INTERVAL_TIME_TWO   = 850
+const INTERVAL_TIME_THREE = 890
 
 //--Array de imágenes
 const imageArray = [
@@ -32,9 +35,10 @@ const getRandomNumber = ()=>{
 const startPlayingButton = document.querySelector("#toPlay");
 
 //--Cajas donde se muestran las figuras
-const boxOne   = document.querySelector("#boxOne");
-const boxTwo   = document.querySelector("#boxTwo");
-const boxThree = document.querySelector("#boxThree");
+// const boxOne   = document.querySelector("#boxOne");
+const boxOne   = document.querySelector(".transitionOne");
+const boxTwo   = document.querySelector(".transitionTwo");
+const boxThree = document.querySelector(".transitionThree");
 
 //--Limpiar todos los intervalos
 const stopInterval = (ide)=>{
@@ -52,10 +56,14 @@ const startChangingImages = ()=>{
         counter1 ++;
         const image = getRandomNumber();
         console.log(image, imageArray[image])
+        boxOne.classList.add("transition-one");
         boxOne.style.backgroundImage = `url(${imageArray[image]})`;
 
-        if(counter1 === MAXIMUM_AMOUNT_PER_ROUND_BOX1 )stopInterval(ideInterval1);
-    },200);
+        if(counter1 === MAXIMUM_AMOUNT_PER_ROUND_BOX1 ){
+            stopInterval(ideInterval1);
+            boxOne.classList.remove("transition-one");
+        }
+    },INTERVAL_TIME_ONE);
 
 
     //intervalo de la caja dos
@@ -64,9 +72,13 @@ const startChangingImages = ()=>{
 
         counter2 ++;
         const image = getRandomNumber();
+        boxTwo.classList.add("transition-two");
         boxTwo.style.backgroundImage = `url(${imageArray[image]})`;
-        if(counter2 === MAXIMUM_AMOUNT_PER_ROUND_BOX2 )stopInterval(ideInterval2);
-    },200);
+        if(counter2 === MAXIMUM_AMOUNT_PER_ROUND_BOX2 ){
+            stopInterval(ideInterval2);
+            boxTwo.classList.remove("transition-two");
+        }
+    },INTERVAL_TIME_TWO);
 
 
     //intervalo de la caja tres
@@ -74,10 +86,14 @@ const startChangingImages = ()=>{
     const ideInterval3 = setInterval(()=>{
         counter3 ++;
         const image = getRandomNumber();
+        boxThree.classList.add("transition-three");
         boxThree.style.backgroundImage =  `url(${imageArray[image]})`;
-        if(counter3 === MAXIMUM_AMOUNT_PER_ROUND_BOX3 )stopInterval(ideInterval3);
+        if(counter3 === MAXIMUM_AMOUNT_PER_ROUND_BOX3 ){
+            stopInterval(ideInterval3);
+            boxThree.classList.remove("transition-three");
+        }
 
-    },200);  
+    },INTERVAL_TIME_THREE);  
 
 }
 
