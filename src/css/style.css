@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
 }
+
 nav{
   height: 75px;
   background-color: #2d08ff;
@@ -19,10 +20,18 @@ body {
   background-size: cover;    /* La imagen cubre toda el área disponible */
   background-position: center; /* Centra la imagen en la página */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
-   width: 100%; /* Abarca todo el ancho */
+  width: 100%; /* Abarca todo el ancho */
   height: 100%;
  
      
+}
+
+h1{
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  top: 15px;
+  
 }
 
 /* HUD del juego */
@@ -157,4 +166,20 @@ footer{
   50% { transform: translateY(-100%); } /* Transición a la segunda imagen */
   95% { transform: translateY(-100%); } /* Muestra la segunda imagen */
   100% { transform: translateY(0%); }   /* Regresa a la primera imagen */
+}
+
+/* Animación del botón PLAY!*/
+
+.button:active {
+  font-size: 35px; 
+  transform: scale(1.2); 
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.button:active {
+  animation: pulse 0.3s ease-in-out;
 }
