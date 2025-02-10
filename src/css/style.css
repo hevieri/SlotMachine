@@ -21,7 +21,7 @@ body {
   background-position: center; /* Centra la imagen en la página */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
   width: 100%; /* Abarca todo el ancho */
-  height: 100%;
+  min-height: 100vh;
  
      
 }
@@ -118,6 +118,18 @@ h1{
 }
 
 
+#description {
+  max-width: 500px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  color: #333;
+  border-left: 5px solid #ff9800;
+}
 
 
 footer{
@@ -127,9 +139,10 @@ footer{
   background-image: url('src/assets/img/nav.jpg');
   color: white;
   text-align: center;
+  position: relative;
   padding: 20px;
   width: 100%;
-  position: absolute;
+  position: relative;
   bottom: 0;
 }
   
