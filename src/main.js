@@ -14,6 +14,7 @@ const MAXIMUM_AMOUNT_PER_ROUND_BOX3 = 40;
 const INTERVAL_TIME_ONE   = 800
 const INTERVAL_TIME_TWO   = 850
 const INTERVAL_TIME_THREE = 890
+let ideIntervals = [];
 
 //--Array de imágenes
 const imageArray = [
@@ -32,21 +33,25 @@ const getRandomNumber = ()=>{
 }
 
 //--Botón "Jugar"
-const startPlayingButton = document.querySelector("#toPlay");
+const startPlayingButton = document.querySelector("#play");
+const stopPlayingButton  = document.querySelector("#stop");
 
 //--Cajas donde se muestran las figuras
 const boxOne   = document.querySelector(".transitionOne");
 const boxTwo   = document.querySelector(".transitionTwo");
 const boxThree = document.querySelector(".transitionThree");
 
-//--Limpiar todos los intervalos
+//--Limpiar los intervalos
 const stopInterval = (ide)=>{
     clearInterval(ide);
+    ideIntervals.shift();
 }
 
 //--Iniciar el cambiador de imágenes
 const startChangingImages = ()=>{
 
+    if(ideIntervals.length > 0)return alert("Ya se está jugando");
+    ideIntervals=[];
 
     //intervalo de la caja uno
     let counter1 = 0;
@@ -98,14 +103,25 @@ const startChangingImages = ()=>{
         }
 
     },INTERVAL_TIME_THREE);  
+    
+    //Ingresar los nuevos ides de intervalos
+    ideIntervals.push(ideInterval1, ideInterval2, ideInterval3);
 
 }
 
+//--Ocultar botón de "Jugar" y mostrar el botón de "Detener"
+const handleButtons = () =>{
+    startPlayingButton.style.display = "none";
+    stopPlayingButton.style.display  = "block";
+}
 
 //--Escuchar click del botón "Jugar"
 startPlayingButton.addEventListener("click", ()=>{
-    startChangingImages()
+    startChangingImages();
+    handleButtons();
 });
+
+
 
 // startChangingImages()
 console.log(imageArray);
