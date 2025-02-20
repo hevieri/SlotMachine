@@ -35,7 +35,6 @@ const getRandomNumber = ()=>{
 const startPlayingButton = document.querySelector("#toPlay");
 
 //--Cajas donde se muestran las figuras
-// const boxOne   = document.querySelector("#boxOne");
 const boxOne   = document.querySelector(".transitionOne");
 const boxTwo   = document.querySelector(".transitionTwo");
 const boxThree = document.querySelector(".transitionThree");
@@ -55,11 +54,12 @@ const startChangingImages = ()=>{
 
         counter1 ++;
         const image = getRandomNumber();
+        const isBoxMaxReached = counter1 === MAXIMUM_AMOUNT_PER_ROUND_BOX1;
         console.log(image, imageArray[image])
         boxOne.classList.add("transition-one");
         boxOne.style.backgroundImage = `url(${imageArray[image]})`;
 
-        if(counter1 === MAXIMUM_AMOUNT_PER_ROUND_BOX1 ){
+        if( isBoxMaxReached ){
             stopInterval(ideInterval1);
             boxOne.classList.remove("transition-one");
         }
@@ -72,9 +72,11 @@ const startChangingImages = ()=>{
 
         counter2 ++;
         const image = getRandomNumber();
+        const isBoxMaxReached = counter2 === MAXIMUM_AMOUNT_PER_ROUND_BOX2;
         boxTwo.classList.add("transition-two");
         boxTwo.style.backgroundImage = `url(${imageArray[image]})`;
-        if(counter2 === MAXIMUM_AMOUNT_PER_ROUND_BOX2 ){
+
+        if( isBoxMaxReached ){
             stopInterval(ideInterval2);
             boxTwo.classList.remove("transition-two");
         }
@@ -86,9 +88,11 @@ const startChangingImages = ()=>{
     const ideInterval3 = setInterval(()=>{
         counter3 ++;
         const image = getRandomNumber();
+        const isBoxMaxReached = counter3 === MAXIMUM_AMOUNT_PER_ROUND_BOX3;
+
         boxThree.classList.add("transition-three");
         boxThree.style.backgroundImage =  `url(${imageArray[image]})`;
-        if(counter3 === MAXIMUM_AMOUNT_PER_ROUND_BOX3 ){
+        if( isBoxMaxReached ){
             stopInterval(ideInterval3);
             boxThree.classList.remove("transition-three");
         }
