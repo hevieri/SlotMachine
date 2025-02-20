@@ -14,6 +14,7 @@ const MAXIMUM_AMOUNT_PER_ROUND_BOX3 = 40;
 const INTERVAL_TIME_ONE   = 800
 const INTERVAL_TIME_TWO   = 850
 const INTERVAL_TIME_THREE = 890
+let stop = false;
 let ideIntervals = [];
 
 //--Array de imágenes
@@ -45,6 +46,7 @@ const boxThree = document.querySelector(".transitionThree");
 const stopInterval = (ide)=>{
     clearInterval(ide);
     ideIntervals.shift();
+    console.log(ide);
 }
 
 //--Iniciar el cambiador de imágenes
@@ -52,6 +54,7 @@ const startChangingImages = ()=>{
 
     if(ideIntervals.length > 0)return alert("Ya se está jugando");
     ideIntervals=[];
+    stop = false;
 
     //intervalo de la caja uno
     let counter1 = 0;
@@ -59,8 +62,9 @@ const startChangingImages = ()=>{
 
         counter1 ++;
         const image = getRandomNumber();
-        const isBoxMaxReached = counter1 === MAXIMUM_AMOUNT_PER_ROUND_BOX1;
-        console.log(image, imageArray[image])
+        const isBoxMaxReached = ( stop === true || ( counter1 === MAXIMUM_AMOUNT_PER_ROUND_BOX1 ) );
+        // console.log(image, imageArray[image])
+        console.log( isBoxMaxReached, "Interval:: ", ideInterval1, "Stop:: ", stop);
         boxOne.classList.add("transition-one");
         boxOne.style.backgroundImage = `url(${imageArray[image]})`;
 
@@ -68,6 +72,7 @@ const startChangingImages = ()=>{
             stopInterval(ideInterval1);
             boxOne.classList.remove("transition-one");
         }
+
     },INTERVAL_TIME_ONE);
 
 
@@ -77,7 +82,7 @@ const startChangingImages = ()=>{
 
         counter2 ++;
         const image = getRandomNumber();
-        const isBoxMaxReached = counter2 === MAXIMUM_AMOUNT_PER_ROUND_BOX2;
+        const isBoxMaxReached =( stop === true || ( counter2 === MAXIMUM_AMOUNT_PER_ROUND_BOX2 ) );
         boxTwo.classList.add("transition-two");
         boxTwo.style.backgroundImage = `url(${imageArray[image]})`;
 
@@ -85,18 +90,21 @@ const startChangingImages = ()=>{
             stopInterval(ideInterval2);
             boxTwo.classList.remove("transition-two");
         }
+
     },INTERVAL_TIME_TWO);
 
 
     //intervalo de la caja tres
     let counter3 = 0;
     const ideInterval3 = setInterval(()=>{
+
         counter3 ++;
         const image = getRandomNumber();
-        const isBoxMaxReached = counter3 === MAXIMUM_AMOUNT_PER_ROUND_BOX3;
+        const isBoxMaxReached = ( stop === true ||  (counter3 === MAXIMUM_AMOUNT_PER_ROUND_BOX3 ) );
 
         boxThree.classList.add("transition-three");
         boxThree.style.backgroundImage =  `url(${imageArray[image]})`;
+
         if( isBoxMaxReached ){
             stopInterval(ideInterval3);
             boxThree.classList.remove("transition-three");
@@ -112,13 +120,25 @@ const startChangingImages = ()=>{
 //--Ocultar botón de "Jugar" y mostrar el botón de "Detener"
 const handleButtons = () =>{
     startPlayingButton.style.display = "none";
-    stopPlayingButton.style.display  = "block";
+
+    setTimeout(()=>{
+        stopPlayingButton.style.display = "block";
+    },2000);
+
+
 }
 
 //--Escuchar click del botón "Jugar"
 startPlayingButton.addEventListener("click", ()=>{
     startChangingImages();
     handleButtons();
+});
+
+//--Escuchar click del botón "Detener"
+stopPlayingButton.addEventListener("click", ()=>{
+    stop = true;
+    startPlayingButton.style.display = "block";
+    stopPlayingButton.style.display = "none";
 });
 
 
