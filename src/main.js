@@ -1,52 +1,48 @@
-/*---------------------------------------------------------------------------
+/*--------------------------------------------------------------------------------
 
                       Controlador de imágenes random
 
--La idea es que cuando le den al botón "Jugar", cada caja empiece a girar
-con un tiempo determinado. Deben  de tener un tiempo global o límite de tiempo
-para que paren todos y por cosas dle azar coincidan.
-----------------------------------------------------------------------------*/
+- Se crea un array con la lista de las imagenes disponibles, sin importar
+si la cantidad de imágenes aumenta o disminuye, su longitud será el  número
+máximo a calcular para crear los números de forma aleatoria.
+-Cada número generado aleaotriamente, efectivamente corresponderá a la imágen 
+del array.
+-Cada caja de imágen contiene su propio intervalo de tiempo en el cual se generarán
+las imágenes aleatoriamente. 
+---------------------------------------------------------------------------------*/
 import './css/style.css';
+import './score.js';
+import {
+    MAXIMUM_AMOUNT_PER_ROUND_BOX1,
+    MAXIMUM_AMOUNT_PER_ROUND_BOX2,
+    MAXIMUM_AMOUNT_PER_ROUND_BOX3,
+    INTERVAL_TIME_ONE,
+    INTERVAL_TIME_TWO,
+    INTERVAL_TIME_THREE,
+    IMAGE_ARRAY,
+    boxOne,
+    boxTwo,
+    boxThree,
+    startPlayingButton,
+    stopPlayingButton,
+    MATCHING_BOXES_DATA
+} from './constants.js';
 
-const MAXIMUM_AMOUNT_PER_ROUND_BOX1 = 25;
-const MAXIMUM_AMOUNT_PER_ROUND_BOX2 = 35;
-const MAXIMUM_AMOUNT_PER_ROUND_BOX3 = 40;
-const INTERVAL_TIME_ONE   = 800
-const INTERVAL_TIME_TWO   = 850
-const INTERVAL_TIME_THREE = 890
+
 let stop = false;
 let ideIntervals = [];
 
-//--Array de imágenes
-const imageArray = [
-    "src/assets/img/1.jpeg",
-    "src/assets/img/2.jpeg",
-    "src/assets/img/3.jpeg",
-    "src/assets/img/4.jpeg",
-    "src/assets/img/5.jpeg",
-    "src/assets/img/6.jpeg",
-];
-
 //--Retornar un número random con la cantida de imágenes.
 const getRandomNumber = ()=>{
-   const  numberImages = imageArray.length;
+   const  numberImages = IMAGE_ARRAY.length;
    return Math.floor((Math.random() * (numberImages)));
 }
-
-//--Botón "Jugar"
-const startPlayingButton = document.querySelector("#play");
-const stopPlayingButton  = document.querySelector("#stop");
-
-//--Cajas donde se muestran las figuras
-const boxOne   = document.querySelector(".transitionOne");
-const boxTwo   = document.querySelector(".transitionTwo");
-const boxThree = document.querySelector(".transitionThree");
 
 //--Limpiar los intervalos
 const stopInterval = (ide)=>{
     clearInterval(ide);
     ideIntervals.shift();
-    console.log(ide);
+    console.log(MATCHING_BOXES_DATA);
 }
 
 //--Iniciar el cambiador de imágenes
@@ -61,16 +57,15 @@ const startChangingImages = ()=>{
     const ideInterval1 = setInterval(()=>{
 
         counter1 ++;
-        const image = getRandomNumber();
+        const randomImageNumber = getRandomNumber();
         const isBoxMaxReached = ( stop === true || ( counter1 === MAXIMUM_AMOUNT_PER_ROUND_BOX1 ) );
-        // console.log(image, imageArray[image])
-        console.log( isBoxMaxReached, "Interval:: ", ideInterval1, "Stop:: ", stop);
         boxOne.classList.add("transition-one");
-        boxOne.style.backgroundImage = `url(${imageArray[image]})`;
+        boxOne.style.backgroundImage = `url(${IMAGE_ARRAY[randomImageNumber]})`;
 
         if( isBoxMaxReached ){
-            stopInterval(ideInterval1);
-            boxOne.classList.remove("transition-one");
+           stopInterval(ideInterval1);
+           boxOne.classList.remove("transition-one");
+           MATCHING_BOXES_DATA.boxOne = randomImageNumber;
         }
 
     },INTERVAL_TIME_ONE);
@@ -81,14 +76,15 @@ const startChangingImages = ()=>{
     const ideInterval2 = setInterval(()=>{
 
         counter2 ++;
-        const image = getRandomNumber();
+        const randomImageNumber = getRandomNumber();
         const isBoxMaxReached =( stop === true || ( counter2 === MAXIMUM_AMOUNT_PER_ROUND_BOX2 ) );
         boxTwo.classList.add("transition-two");
-        boxTwo.style.backgroundImage = `url(${imageArray[image]})`;
+        boxTwo.style.backgroundImage = `url(${IMAGE_ARRAY[randomImageNumber]})`;
 
         if( isBoxMaxReached ){
             stopInterval(ideInterval2);
             boxTwo.classList.remove("transition-two");
+            MATCHING_BOXES_DATA.boxTwo = randomImageNumber;
         }
 
     },INTERVAL_TIME_TWO);
@@ -99,15 +95,16 @@ const startChangingImages = ()=>{
     const ideInterval3 = setInterval(()=>{
 
         counter3 ++;
-        const image = getRandomNumber();
+        const randomImageNumber = getRandomNumber();
         const isBoxMaxReached = ( stop === true ||  (counter3 === MAXIMUM_AMOUNT_PER_ROUND_BOX3 ) );
 
         boxThree.classList.add("transition-three");
-        boxThree.style.backgroundImage =  `url(${imageArray[image]})`;
+        boxThree.style.backgroundImage =  `url(${IMAGE_ARRAY[randomImageNumber]})`;
 
         if( isBoxMaxReached ){
             stopInterval(ideInterval3);
             boxThree.classList.remove("transition-three");
+            MATCHING_BOXES_DATA.boxThree = randomImageNumber;
         }
 
     },INTERVAL_TIME_THREE);  
@@ -124,24 +121,18 @@ const handleButtons = () =>{
     setTimeout(()=>{
         stopPlayingButton.style.display = "block";
     },2000);
-
-
 }
 
-//--Escuchar click del botón "Jugar"
+
+//--Manejar click del botón "Jugar"
 startPlayingButton.addEventListener("click", ()=>{
     startChangingImages();
     handleButtons();
 });
 
-//--Escuchar click del botón "Detener"
+//--Manejar click del botón "Detener"
 stopPlayingButton.addEventListener("click", ()=>{
     stop = true;
     startPlayingButton.style.display = "block";
     stopPlayingButton.style.display = "none";
 });
-
-
-
-// startChangingImages()
-console.log(imageArray);
