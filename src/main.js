@@ -11,7 +11,7 @@ del array.
 las imágenes aleatoriamente. 
 ---------------------------------------------------------------------------------*/
 import './css/style.css';
-import './score.js';
+import { setAmount } from './score.js';
 import {
     MAXIMUM_AMOUNT_PER_ROUND_BOX1,
     MAXIMUM_AMOUNT_PER_ROUND_BOX2,
@@ -43,6 +43,7 @@ const stopInterval = (ide)=>{
     clearInterval(ide);
     ideIntervals.shift();
     console.log(MATCHING_BOXES_DATA);
+    if(ideIntervals.length == 0) setAmount();
 }
 
 //--Iniciar el cambiador de imágenes
@@ -63,9 +64,9 @@ const startChangingImages = ()=>{
         boxOne.style.backgroundImage = `url(${IMAGE_ARRAY[randomImageNumber]})`;
 
         if( isBoxMaxReached ){
-           stopInterval(ideInterval1);
-           boxOne.classList.remove("transition-one");
-           MATCHING_BOXES_DATA.boxOne = randomImageNumber;
+            MATCHING_BOXES_DATA.boxOne = randomImageNumber;
+            boxOne.classList.remove("transition-one");
+            stopInterval(ideInterval1);
         }
 
     },INTERVAL_TIME_ONE);
@@ -82,9 +83,9 @@ const startChangingImages = ()=>{
         boxTwo.style.backgroundImage = `url(${IMAGE_ARRAY[randomImageNumber]})`;
 
         if( isBoxMaxReached ){
-            stopInterval(ideInterval2);
-            boxTwo.classList.remove("transition-two");
             MATCHING_BOXES_DATA.boxTwo = randomImageNumber;
+            boxTwo.classList.remove("transition-two");
+            stopInterval(ideInterval2);
         }
 
     },INTERVAL_TIME_TWO);
@@ -102,9 +103,9 @@ const startChangingImages = ()=>{
         boxThree.style.backgroundImage =  `url(${IMAGE_ARRAY[randomImageNumber]})`;
 
         if( isBoxMaxReached ){
-            stopInterval(ideInterval3);
-            boxThree.classList.remove("transition-three");
             MATCHING_BOXES_DATA.boxThree = randomImageNumber;
+            boxThree.classList.remove("transition-three");
+            stopInterval(ideInterval3);
         }
 
     },INTERVAL_TIME_THREE);  

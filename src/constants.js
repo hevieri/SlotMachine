@@ -4,7 +4,6 @@ const MAXIMUM_AMOUNT_PER_ROUND_BOX3 = 40;
 const INTERVAL_TIME_ONE   = 800
 const INTERVAL_TIME_TWO   = 850
 const INTERVAL_TIME_THREE = 890
-const SCORE = 0;
 
 //--Array de imágenes
 const IMAGE_ARRAY = [
@@ -38,7 +37,6 @@ export {
     INTERVAL_TIME_ONE,
     INTERVAL_TIME_TWO,
     INTERVAL_TIME_THREE,
-    SCORE,
     IMAGE_ARRAY,
     boxOne,
     boxTwo,
