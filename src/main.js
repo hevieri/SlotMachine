@@ -43,7 +43,10 @@ const stopInterval = (ide)=>{
     clearInterval(ide);
     ideIntervals.shift();
 
-    if(ideIntervals.length == 0) setAmount();
+    if(ideIntervals.length == 0){
+        setAmount();
+        resetButton();
+    } 
     
 }
 
@@ -133,8 +136,13 @@ startPlayingButton.addEventListener("click", ()=>{
 });
 
 //--Manejar click del botón "Detener"
-stopPlayingButton.addEventListener("click", ()=>{
+stopPlayingButton.addEventListener("click", resetButton);
+
+function resetButton(){
     stop = true;
-    startPlayingButton.style.display = "block";
-    stopPlayingButton.style.display = "none";
-});
+
+    stopPlayingButton.style.display  = "none";
+    setTimeout(()=>{
+        startPlayingButton.style.display = "block";
+    },600)
+}
