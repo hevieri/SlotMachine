@@ -1,9 +1,4 @@
 import {
-    boxOne,
-    boxTwo,
-    boxThree,
-    startPlayingButton,
-    stopPlayingButton,
     showScore,
     MATCHING_BOXES_DATA,
 } from './constants.js';

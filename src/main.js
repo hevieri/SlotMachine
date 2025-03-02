@@ -32,13 +32,13 @@ import {
 let stop = false;
 let ideIntervals = [];
 
-//--Retornar un número random con la cantida de imágenes.
+//--Retornar un número random con la cantidad de imágenes.
 const getRandomNumber = ()=>{
    const  numberImages = IMAGE_ARRAY.length;
    return Math.floor((Math.random() * (numberImages)));
 }
 
-//--Limpiar los intervalos
+//--Limpiar los intervalos y llamar funciones correspondientes.
 const stopInterval = (ide)=>{
     clearInterval(ide);
     ideIntervals.shift();
@@ -144,5 +144,5 @@ function resetButton(){
     stopPlayingButton.style.display  = "none";
     setTimeout(()=>{
         startPlayingButton.style.display = "block";
-    },600)
+    },700)
 }
