@@ -42,8 +42,9 @@ const getRandomNumber = ()=>{
 const stopInterval = (ide)=>{
     clearInterval(ide);
     ideIntervals.shift();
-    console.log(MATCHING_BOXES_DATA);
+
     if(ideIntervals.length == 0) setAmount();
+    
 }
 
 //--Iniciar el cambiador de imágenes

@@ -204,3 +204,21 @@ footer{
 .button:active {
   animation: pulse 0.3s ease-in-out;
 }
+
+
+
+.winning-boxes{
+  animation: shadow-pulse 1.5s ease-in-out 2; /*Ejecuta la animación 2 veces*/
+}
+
+@keyframes shadow-pulse{
+  0%{
+      box-shadow: 0px 0px 9px 3px rgb(0, 255, 0);
+  }
+  50%{
+      box-shadow: 0px 0px 9px 3px orange;
+  }
+  100%{
+      box-shadow: 0px 0px 9px 3px rgb(0, 255, 0);
+  }
+}
