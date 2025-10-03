@@ -1,14 +1,13 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
-nav{
+nav {
   height: 75px;
   background-color: #2d08ff;
   margin-bottom: 50px;
-  background-image: url('src/assets/img/nav.webp');
-  
+  background-image: url("assets/img/nav.jpg");
 }
 
 /* BODY */
@@ -16,86 +15,76 @@ body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-image: url('src/assets/img/fondo.webp');
-  background-size: cover;    /* La imagen cubre toda el área disponible */
-  background-position: center; /* Centra la imagen en la página */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
-  width: 100%; /* Abarca todo el ancho */
+  background-image: url("assets/img/fondod.jpg"); /* o "assets/img/fondo2.webp" si preferís */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
   min-height: 100vh;
- 
-     
 }
 
-h1{
+h1 {
   color: #ffffff;
   text-align: center;
   position: relative;
   top: 15px;
-  
 }
 
 /* HUD del juego */
 .hud {
   display: flex;
-  justify-content: space-between; /* Espacio entre los elementos */
-  align-items: center; /* Alinea los elementos verticalmente */
-  width: 100%; /* Opcional, para asegurarte que ocupa todo el ancho */
-  padding: 10px; /* Espaciado opcional */
-  background-image: url('src/assets/img/nav.jpg');
+  justify-content: space-between;
+  align-items: center;
   width: 350px;
   margin: auto;
   margin-bottom: 30px;
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-image: url("assets/img/nav.jpg");
 }
 
-.score, .rewards {
-  font-size: 18px; /* Tamaño de fuente */
-  color: white; /* Color de texto */
+.score,
+.rewards {
+  font-size: 18px;
+  color: white;
 }
-
-
 
 /* Contenedor de las cajas */
 .container {
   display: flex;
-  justify-content: center;  /* Centra las cajas horizontalmente */
-  align-items: center;      /* Alinea las cajas verticalmente */
-  width: 100%;              /* El contenedor ocupará todo el ancho disponible */
-  margin: auto;             /* Centra el contenedor en la página */
-  padding: 20px 0;          /* Agrega un poco de espacio arriba y abajo */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+  padding: 20px 0;
   margin-top: 25px;
 }
 
 /* Estilo de cada caja */
 .caja {
-  width: 150px;                  /* Ancho de la caja más grande */
-  height: 150px;                 /* Alto de la caja más grande */
-  background-color: #ffffff;     /* Color de fondo */
+  width: 150px;
+  height: 150px;
+  background-color: #ffffff;
   display: flex;
-  justify-content: center;       /* Centra el contenido de la caja horizontalmente */
-  align-items: center;           /* Centra el contenido de la caja verticalmente */
-  color: white;                  /* Color del texto */
-  border-radius: 10px;           /* Bordes redondeados */
-  box-shadow: 0 0 10px rgba(255, 6, 6, 0.555); /* Sombra para darle más efecto */
-  font-size: 18px;               /* Tamaño del texto */
-  margin: 0 10px;   
-  overflow: hidden;             /* Espacio entre las cajas */
-  background-image: url('src/assets/img/dotbackground.png');
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 6, 6, 0.555);
+  font-size: 18px;
+  margin: 0 10px;
+  overflow: hidden;
+  background-image: url("assets/img/dotbackground.png");
   background-size: 100% 100%;
-  /* opacity: 0.7; */
 }
 
-/* Hacemos que las imágenes se ajusten al tamaño de las cajas */
 .caja img {
-  width: 100%;  /* Ajusta la imagen para que ocupe todo el ancho de la caja */
-  height: 100%; /* Ajusta la imagen para que ocupe todo el alto de la caja */
-  object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
-  border-radius: 8px; /* Bordes redondeados de la imagen */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
 }
-
-
 
 /* Botón PLAY */
 .button {
@@ -113,13 +102,12 @@ h1{
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
-  background-image: url('src/assets/img/nav.jpg');
-  
+  background-image: url("assets/img/nav.jpg");
 }
 
 #stop {
   display: flex;
-  gap:8px;
+  gap: 8px;
   align-items: center;
   justify-content: center;
   display: none;
@@ -139,86 +127,71 @@ h1{
   border-left: 5px solid #4a0201;
 }
 
-
-footer{
+footer {
   height: 75px;
   background-color: #2d08ff;
   margin-top: 50px;
-  background-image: url('src/assets/img/nav.webp');
+  background-image: url("assets/img/nav.jpg");
   color: white;
   text-align: center;
-  position: relative;
   padding: 20px;
   width: 100%;
   position: relative;
   bottom: 0;
 }
-  
-/****Control de flujo de cajas***/
 
-.box-img{
-  width:100%;
-  height:100%;
+/**** Control de flujo de cajas ***/
+.box-img {
+  width: 100%;
+  height: 100%;
 }
 
- .transition-one {
+.transition-one {
   background-size: cover;
   background-position: center;
   animation: slide 0.8s infinite;
-  opacity: 1!important;
- }
- .transition-two {
+  opacity: 1 !important;
+}
+.transition-two {
   background-size: cover;
   background-position: center;
   animation: slide 0.85s infinite;
-  opacity: 1!important;
- }
- .transition-three {
+  opacity: 1 !important;
+}
+.transition-three {
   background-size: cover;
   background-position: center;
   animation: slide 0.89s infinite;
-  opacity: 1!important;
- }
-
- /* Animación */
-@keyframes slide {
-  0% { transform: translateY(0%); }
-  45% { transform: translateY(0%); }  /* Muestra la primera imagen */
-  50% { transform: translateY(-100%); } /* Transición a la segunda imagen */
-  95% { transform: translateY(-100%); } /* Muestra la segunda imagen */
-  100% { transform: translateY(0%); }   /* Regresa a la primera imagen */
+  opacity: 1 !important;
 }
 
-/* Animación del botón PLAY!*/
+@keyframes slide {
+  0% { transform: translateY(0%); }
+  45% { transform: translateY(0%); }
+  50% { transform: translateY(-100%); }
+  95% { transform: translateY(-100%); }
+  100% { transform: translateY(0%); }
+}
 
 .button:active {
-  font-size: 35px; 
-  transform: scale(1.2); 
+  font-size: 35px;
+  transform: scale(1.2);
 }
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.2); }
   100% { transform: scale(1); }
 }
-
 .button:active {
   animation: pulse 0.3s ease-in-out;
 }
 
-
-
-.winning-boxes{
-  animation: shadow-pulse 1.5s ease-in-out 2; /*Ejecuta la animación 2 veces*/
+.winning-boxes {
+  animation: shadow-pulse 1.5s ease-in-out 2;
 }
 
-@keyframes shadow-pulse{
-  0%{
-      box-shadow: 0px 0px 9px 3px rgb(0, 255, 0);
-  }
-  50%{
-      box-shadow: 0px 0px 9px 3px orange;
-  }
-  100%{
-      box-shadow: 0px 0px 9px 3px rgb(0, 255, 0);
-  }
+@keyframes shadow-pulse {
+  0% { box-shadow: 0px 0px 9px 3px rgb(0, 255, 0); }
+  50% { box-shadow: 0px 0px 9px 3px orange; }
+  100% { box-shadow: 0px 0px 9px 3px rgb(0, 255, 0); }
 }
