@@ -1,52 +1,61 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/SlotMachine/vite.svg" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <base href="/SlotMachine/" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/SlotMachine/vite.svg"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <script type="module" crossorigin src="/SlotMachine/assets/index-B5dmrMWO.js"></script>
-    <link rel="stylesheet" crossorigin href="/SlotMachine/assets/index-Co9nFben.css">
+    <title>Tragaperras</title>
+    <script type="module" crossorigin src="/SlotMachine/assets/index-BYDG1c3P.js"></script>
+    <link rel="stylesheet" crossorigin href="/SlotMachine/assets/index-C9rktUPZ.css">
   </head>
-<body>
-<nav>
-    <h1>Tragaperras</h1>
-</nav>
+  <body>
+    <nav>
+      <h1>Tragaperras</h1>
+    </nav>
 
-
-  <!-- HUD del Juego -->
     <div class="hud">
-        <div class="score">Score: <span id="score">0</span></div>
-        <div class="rewards">Rewards: </div>
+      <div class="score">Score: <span id="score">0</span></div>
+      <div class="rewards">Rewards:</div>
     </div>
+
     <div class="container">
-        <div class="caja" id="boxOne">
-          <div class="box-img transitionOne" ></div>
-        </div>
-        <div class="caja" id="boxTwo">
-          <div class="box-img transitionTwo" ></div>
-        </div>
-        <div class="caja" id="boxThree">
-          <div class="box-img transitionThree" ></div>
-        </div>
+      <div class="caja" id="boxOne">
+        <div class="box-img transitionOne"></div>
+      </div>
+      <div class="caja" id="boxTwo">
+        <div class="box-img transitionTwo"></div>
+      </div>
+      <div class="caja" id="boxThree">
+        <div class="box-img transitionThree"></div>
+      </div>
     </div>
-   
-        
-      <!-- Botón de Jugar -->
-      <button class="button" id="play">Play!</button>
-      <button class="button" id="stop"><i class="fa-solid fa-stop"></i> Detener</button>
 
-      <div class="container" id="description">
-        Este minijuego simula una "Slot Machine", conocida en español como "Tragaperras". Generalmente, en este tipo de juegos se deben hacer coincidir tres símbolos idénticos, como monedas u otros elementos, para ganar.  
-    
-        Como encontramos divertida la palabra "Tragaperras", decidimos jugar con su significado y convertir las imágenes en perros. ¡Tu objetivo es conseguir tres caras de perro iguales para ganar!
+    <button class="button" id="play">Play!</button>
+    <button class="button" id="stop">
+      <i class="fa-solid fa-stop"></i> Detener
+    </button>
+
+    <div class="container" id="description">
+      Este minijuego simula una "Slot Machine", conocida en español como
+      "Tragaperras". Tu objetivo es conseguir tres caras de perro iguales para
+      ganar.
     </div>
-    
+
     <footer>
-        <p>2025</p>
-    </footer>
-
-</body>
-
+      <p>2025</p>
+    </footer>
+
+    <script src="scripts/fondos.js"></script>
+    <script src="scripts/dotbackdropmenu.js"></script>
+    <script src="scripts/nova.js"></script>
+  </body>
 </html>
