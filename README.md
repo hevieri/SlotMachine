@@ -5,12 +5,6 @@ Fue desarrollado en colaboración con otro programador, combinando código, lóg
 
 ---
 
-## 🚧 Estado del proyecto
-⚠️ **En proceso de desarrollo**  
-Todavía no está finalizado. Algunas animaciones, estilos y detalles de la lógica pueden cambiar o no estar completos.
-
----
-
 ## 🧠 ¿Qué hace?
 - Genera combinaciones aleatorias de íconos en tres slots.  
 - Verifica coincidencias y muestra resultados visuales.  
@@ -37,7 +31,5 @@ Un ejemplo de trabajo en equipo con comunicación constante, pruebas compartidas
 ---
 
 ## 🚀 Cómo usarlo
-Cloná este repositorio:
 
-```bash
-git clone https://github.com/hevieri/SlotMachine.git
+https://hevieri.github.io/SlotMachine/
