@@ -4,41 +4,42 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+html, body {
+  height: 100dvh;
+  overflow: hidden;
 }
 
 body {
   font-family: 'Inter', sans-serif;
   background: radial-gradient(ellipse at center, #1a0000 0%, #0d0000 70%, #000000 100%);
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   color: #fff;
-  overflow-x: hidden;
+  padding: clamp(6px, 1.5vh, 20px);
+  gap: clamp(4px, 1vh, 12px);
 }
 
 /* ===== HEADER / NEON SIGN ===== */
 .header {
-  width: 100%;
-  padding: 30px 20px 10px;
+  flex: 0 0 auto;
   text-align: center;
-  position: relative;
+  line-height: 1;
 }
 
 .neon-sign {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 0;
 }
 
 .neon-text {
   font-family: 'Playfair Display', serif;
-  font-size: 3rem;
+  font-size: clamp(1.4rem, 5vh, 3rem);
   font-weight: 900;
-  letter-spacing: 6px;
+  letter-spacing: clamp(2px, 1vw, 6px);
   color: #fff;
   text-shadow:
     0 0 7px #ffd700,
@@ -71,24 +72,23 @@ body {
 
 .neon-sub {
   font-family: 'Playfair Display', serif;
-  font-size: 1rem;
+  font-size: clamp(0.6rem, 1.8vh, 1rem);
   color: #ffd700;
-  letter-spacing: 4px;
+  letter-spacing: clamp(1px, 0.5vw, 4px);
   opacity: 0.8;
 }
 
 /* ===== HUD ===== */
 .hud {
+  flex: 0 0 auto;
   display: flex;
   justify-content: center;
-  gap: 40px;
-  width: 100%;
-  max-width: 500px;
-  margin: 20px auto 25px;
-  padding: 16px 30px;
+  gap: clamp(16px, 4vw, 40px);
+  width: auto;
+  padding: clamp(6px, 1.2vh, 16px) clamp(16px, 3vw, 30px);
   background: linear-gradient(145deg, #1a0000, #2a0000);
   border: 2px solid #d4af37;
-  border-radius: 16px;
+  border-radius: clamp(8px, 1.5vh, 16px);
   box-shadow:
     0 0 20px rgba(212, 175, 55, 0.4),
     inset 0 0 30px rgba(0, 0, 0, 0.5);
@@ -98,42 +98,45 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 0;
 }
 
 .hud-item i {
-  font-size: 1.3rem;
+  font-size: clamp(0.8rem, 2vh, 1.3rem);
   color: #ffd700;
   filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.6));
 }
 
 .hud-item span {
-  font-size: 0.7rem;
+  font-size: clamp(0.5rem, 1.2vh, 0.7rem);
   font-weight: 600;
   color: #a08040;
-  letter-spacing: 2px;
+  letter-spacing: clamp(1px, 0.3vw, 2px);
 }
 
 .hud-value {
   font-family: 'Playfair Display', serif;
-  font-size: 1.8rem !important;
+  font-size: clamp(1rem, 3.5vh, 1.8rem) !important;
   font-weight: 900 !important;
   color: #ffd700 !important;
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-  min-width: 60px;
+  min-width: clamp(30px, 8vw, 60px);
   text-align: center;
 }
 
 /* ===== MACHINE FRAME ===== */
 .machine-frame {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
   background: linear-gradient(180deg, #2a0000 0%, #1a0000 50%, #0d0000 100%);
-  border: 4px solid #d4af37;
-  border-radius: 24px;
-  padding: 30px 30px 25px;
-  max-width: 580px;
-  width: 90%;
-  margin: 0 auto;
+  border: clamp(2px, 0.4vh, 4px) solid #d4af37;
+  border-radius: clamp(12px, 2vh, 24px);
+  padding: clamp(8px, 2vh, 24px);
+  max-width: min(580px, 90vw);
+  width: 90vw;
   box-shadow:
     0 0 40px rgba(212, 175, 55, 0.3),
     0 0 80px rgba(212, 175, 55, 0.1),
@@ -143,21 +146,19 @@ body {
 /* ===== MARQUEE LIGHTS ===== */
 .marquee-top,
 .marquee-bottom {
+  flex: 0 0 auto;
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 18px;
+  gap: clamp(4px, 1vw, 12px);
   flex-wrap: wrap;
 }
 
-.marquee-bottom {
-  margin-top: 18px;
-  margin-bottom: 0;
-}
+.marquee-top { margin-bottom: clamp(4px, 1vh, 12px); }
+.marquee-bottom { margin-top: clamp(4px, 1vh, 12px); }
 
 .marquee-light {
-  width: 14px;
-  height: 14px;
+  width: clamp(6px, 1.5vh, 14px);
+  height: clamp(6px, 1.5vh, 14px);
   border-radius: 50%;
   background: #8b0000;
   box-shadow: 0 0 6px rgba(139, 0, 0, 0.6);
@@ -177,23 +178,26 @@ body {
 
 /* ===== REEL CONTAINER ===== */
 .reel-container {
+  flex: 1 1 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
-  padding: 16px;
+  gap: clamp(4px, 1.2vh, 12px);
+  padding: clamp(6px, 1.5vh, 16px);
   background: #0a0000;
-  border-radius: 16px;
-  border: 3px solid #8b6914;
+  border-radius: clamp(8px, 1.5vh, 16px);
+  border: clamp(2px, 0.3vh, 3px) solid #8b6914;
   box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
+  min-height: 0;
 }
 
 .reel-window {
-  width: 150px;
-  height: 150px;
+  flex: 0 0 auto;
+  width: clamp(80px, 20vh, 150px);
+  height: clamp(80px, 20vh, 150px);
   background: #000;
-  border-radius: 12px;
-  border: 3px solid #d4af37;
+  border-radius: clamp(6px, 1vh, 12px);
+  border: clamp(2px, 0.3vh, 3px) solid #d4af37;
   box-shadow:
     0 0 15px rgba(212, 175, 55, 0.4),
     inset 0 0 20px rgba(0, 0, 0, 0.8);
@@ -240,7 +244,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Stopping animation */
 @keyframes reel-stop {
   0% { transform: translateY(-15%); filter: blur(3px); }
   50% { transform: translateY(5%); filter: blur(1px); }
@@ -270,11 +273,12 @@ body {
 
 /* ===== CONTROLS ===== */
 .controls {
+  flex: 0 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  margin-top: 22px;
+  gap: clamp(8px, 2vw, 20px);
+  margin-top: clamp(4px, 1.2vh, 16px);
 }
 
 .btn-spin,
@@ -282,12 +286,12 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 14px 36px;
+  gap: clamp(4px, 0.5vw, 8px);
+  padding: clamp(6px, 1.2vh, 14px) clamp(16px, 3vw, 36px);
   font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
+  font-size: clamp(0.8rem, 2.5vh, 1.2rem);
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: clamp(1px, 0.3vw, 2px);
   border: none;
   border-radius: 50px;
   cursor: pointer;
@@ -332,25 +336,26 @@ body {
 
 .btn-spin i,
 .btn-stop i {
-  font-size: 1rem;
+  font-size: clamp(0.6rem, 1.5vh, 1rem);
 }
 
 /* ===== INFO PANEL ===== */
 .info-panel {
-  max-width: 450px;
-  width: 90%;
-  margin: 25px auto;
-  padding: 18px 24px;
+  flex: 0 0 auto;
+  max-width: min(450px, 90vw);
+  width: auto;
+  padding: clamp(4px, 0.8vh, 12px) clamp(12px, 2vw, 24px);
   background: linear-gradient(145deg, rgba(26, 0, 0, 0.95), rgba(13, 0, 0, 0.95));
   border: 2px solid #8b6914;
-  border-radius: 16px;
+  border-radius: clamp(8px, 1.5vh, 16px);
   text-align: center;
   box-shadow: 0 0 20px rgba(139, 105, 20, 0.3);
+  line-height: 1;
 }
 
 .info-panel p {
-  font-size: 0.9rem;
-  line-height: 1.8;
+  font-size: clamp(0.6rem, 1.5vh, 0.85rem);
+  line-height: 1.6;
   color: #c0a060;
 }
 
@@ -361,21 +366,21 @@ body {
 
 .info-panel i {
   color: #ffd700;
-  margin: 0 6px;
+  margin: 0 clamp(2px, 0.5vw, 6px);
 }
 
 /* ===== FOOTER ===== */
 .footer {
+  flex: 0 0 auto;
   width: 100%;
-  padding: 20px;
   text-align: center;
-  margin-top: auto;
+  padding: clamp(4px, 0.8vh, 12px);
   border-top: 2px solid #8b6914;
   box-shadow: 0 -5px 20px rgba(139, 105, 20, 0.2);
 }
 
 .footer p {
-  font-size: 0.85rem;
+  font-size: clamp(0.5rem, 1.2vh, 0.8rem);
   color: #a08040;
   letter-spacing: 1px;
 }
@@ -405,56 +410,19 @@ body {
   100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 640px) {
-  .neon-text {
-    font-size: 2rem;
-    letter-spacing: 3px;
-  }
-
-  .machine-frame {
-    padding: 16px;
-  }
-
-  .reel-window {
-    width: 100px;
-    height: 100px;
-  }
-
-  .reel-container {
-    gap: 8px;
-    padding: 10px;
-  }
-
-  .hud {
-    gap: 20px;
-    padding: 12px 16px;
-    max-width: 90%;
-  }
-
-  .marquee-light {
-    width: 10px;
-    height: 10px;
-    gap: 8px;
-  }
-
-  .marquee-top, .marquee-bottom {
-    gap: 8px;
-  }
-
-  .btn-spin, .btn-stop {
-    padding: 12px 24px;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .reel-window {
-    width: 85px;
-    height: 85px;
-  }
-
-  .neon-text {
-    font-size: 1.5rem;
-  }
+/* ===== RESPONSIVE (small screens) ===== */
+@media (max-height: 600px) {
+  body { gap: 2px; padding: 4px; }
+  .machine-frame { padding: 6px; border-radius: 10px; }
+  .reel-container { padding: 4px; gap: 4px; }
+  .reel-window { width: 70px; height: 70px; }
+  .controls { margin-top: 4px; }
+  .btn-spin, .btn-stop { padding: 4px 12px; font-size: 0.65rem; }
+  .marquee-top, .marquee-bottom { gap: 3px; }
+  .marquee-top { margin-bottom: 4px; }
+  .marquee-bottom { margin-top: 4px; }
+  .marquee-light { width: 5px; height: 5px; }
+  .hud { padding: 3px 10px; border-width: 1px; gap: 12px; }
+  .info-panel { display: none; }
+  .footer { display: none; }
 }
