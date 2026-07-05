@@ -1,121 +1,97 @@
 import {
     showScore,
+    showReward,
     MATCHING_BOXES_DATA,
+    reelOne,
+    reelTwo,
+    reelThree,
 } from './constants.js';
 
 let SCORE = 0;
 
-const updateScoreView   = ()=>{
+const updateScoreView = () => {
     showScore.innerText = SCORE;
 }
 
-const calculateScore = ()=>{
+const calculateScore = () => {
     const box1 = MATCHING_BOXES_DATA.boxOne;
     const box2 = MATCHING_BOXES_DATA.boxTwo;
     const box3 = MATCHING_BOXES_DATA.boxThree;
-    
-    if(box1 === box2 && box2 === box3 ) return 100;
-    if(box1 === box2 || box1 === box3 ||  box2 === box3 ) return 50;
+
+    if(box1 === box2 && box2 === box3) return 100;
+    if(box1 === box2 || box1 === box3 || box2 === box3) return 50;
 
     return -10;
 }
 
-
-function addAnimation(type){
-
-    const boxPointer = {
-
-        box1AndBox2: ()=>{
-            const box1 = document.querySelector("#boxOne");
-            const box2 = document.querySelector("#boxTwo");
-            box1.classList.add("winning-boxes");
-            box2.classList.add("winning-boxes");
-     
-             setTimeout(()=>{
-                box1.classList.remove("winning-boxes");            
-                box2.classList.remove("winning-boxes");            
-             },1500);
-
-        },
-
-        box1AndBox3: ()=>{
-            const box1 = document.querySelector("#boxOne");
-            const box3 = document.querySelector("#boxThree");
-            box1.classList.add("winning-boxes");
-            box3.classList.add("winning-boxes");
-     
-             setTimeout(()=>{
-                box1.classList.remove("winning-boxes");            
-                box3.classList.remove("winning-boxes");            
-             },1500);
-        },
-
-        box2AndBox3: ()=>{
-            const box2 = document.querySelector("#boxTwo");
-            const box3 = document.querySelector("#boxThree");
-            box2.classList.add("winning-boxes");
-            box3.classList.add("winning-boxes");
-     
-             setTimeout(()=>{
-                box2.classList.remove("winning-boxes");            
-                box3.classList.remove("winning-boxes");            
-             },1500);
-        },
-
-        allBoxes: ()=>{
-            const boxes = document.querySelector('.caja');
-            boxes.classList.add("winning-boxes");
-     
-             setTimeout(()=>{
-                 boxes.classList.remove("winning-boxes");            
-             },1500);
-        },
-
-    }
-    
-    boxPointer[type]();
-
+const addWinAnimation = (reels) => {
+    reels.forEach(reel => {
+        reel.classList.add("win");
+        setTimeout(() => reel.classList.remove("win"), 2400);
+    });
 }
 
+const fireConfetti = () => {
+    const container = document.getElementById('confetti-container');
+    const colors = ['#ffd700', '#ff6b6b', '#ff4757', '#ffa502', '#ff6348', '#ffd700', '#b8860b'];
+    const shapes = ['■', '●', '▲', '★', '♦'];
 
-const animateWinningBoxes = () =>{
+    for(let i = 0; i < 80; i++) {
+        const el = document.createElement('div');
+        el.className = 'confetti-piece';
+        el.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+        el.style.left = Math.random() * 100 + '%';
+        el.style.color = colors[Math.floor(Math.random() * colors.length)];
+        el.style.fontSize = (Math.random() * 14 + 8) + 'px';
+        el.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        el.style.animationDelay = (Math.random() * 1.5) + 's';
+        container.appendChild(el);
 
+        setTimeout(() => el.remove(), 5000);
+    }
+}
+
+const animateWinningBoxes = () => {
     const box1 = MATCHING_BOXES_DATA.boxOne;
     const box2 = MATCHING_BOXES_DATA.boxTwo;
     const box3 = MATCHING_BOXES_DATA.boxThree;
+    const points = calculateScore();
 
-    if( box1 === box2 && box2 === box3 ){
-        const type = "allBoxes";
-        addAnimation(type);
+    if(points <= 0) return;
+
+    const reelsToAnimate = [];
+
+    if(box1 === box2) { reelsToAnimate.push(reelOne, reelTwo); }
+    if(box1 === box3 && !reelsToAnimate.includes(reelOne)) { reelsToAnimate.push(reelOne, reelThree); }
+    if(box2 === box3 && !reelsToAnimate.includes(reelTwo) && !reelsToAnimate.includes(reelThree)) {
+        reelsToAnimate.push(reelTwo, reelThree);
+    }
+    if(box1 === box2 && box2 === box3) {
+        reelsToAnimate.length = 0;
+        reelsToAnimate.push(reelOne, reelTwo, reelThree);
     }
 
-    if( box1 === box2 ){
-        const type = "box1AndBox2";
-        addAnimation(type);
-    }
+    addWinAnimation(reelsToAnimate);
+    showReward.innerText = '+' + points;
+    fireConfetti();
 
-    if( box1 === box3 ){
-        const type = "box1AndBox3";
-        addAnimation(type);
-    }
-
-    if( box2 === box3 ){
-        const type = "box2AndBox3";
-        addAnimation(type);
-    }
-
+    setTimeout(() => { showReward.innerText = '-'; }, 3000);
 }
 
-const setAmount = () =>{
-
+const setAmount = () => {
     const getNewScore = calculateScore();
     SCORE = SCORE + getNewScore;
-    
+
     if(SCORE <= 0) SCORE = 0;
-    
+
     updateScoreView();
-    animateWinningBoxes();
-    
+
+    if(getNewScore > 0) {
+        animateWinningBoxes();
+    } else {
+        showReward.innerText = getNewScore;
+        setTimeout(() => { showReward.innerText = '-'; }, 2000);
+    }
 }
 
 export {

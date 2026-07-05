@@ -2,60 +2,115 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <base href="/SlotMachine/" />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="/SlotMachine/vite.svg"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tragaperras</title>
-    <script type="module" crossorigin src="/SlotMachine/assets/index-Dy0SfRYl.js"></script>
-    <link rel="stylesheet" crossorigin href="/SlotMachine/assets/index-gvMuwfBp.css">
+    <title>SlothMachine 🎰</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script type="module" crossorigin src="/assets/index-Be61f9Z-.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CAebEqZp.css">
   </head>
   <body>
-    <nav>
-      <h1>Tragaperras</h1>
-    </nav>
+
+    <header class="header">
+      <div class="neon-sign">
+        <span class="neon-text">SLOTHMACHINE</span>
+        <span class="neon-sub">🐶 tragaluperras 🐶</span>
+      </div>
+    </header>
 
     <div class="hud">
-      <div class="score">Score: <span id="score">0</span></div>
-      <div class="rewards">Rewards:</div>
-    </div>
-
-    <div class="container">
-      <div class="caja" id="boxOne">
-        <div class="box-img transitionOne"></div>
+      <div class="hud-item">
+        <i class="fa-solid fa-coins"></i>
+        <span>SCORE</span>
+        <span id="score" class="hud-value">0</span>
       </div>
-      <div class="caja" id="boxTwo">
-        <div class="box-img transitionTwo"></div>
-      </div>
-      <div class="caja" id="boxThree">
-        <div class="box-img transitionThree"></div>
+      <div class="hud-item">
+        <i class="fa-solid fa-trophy"></i>
+        <span>REWARD</span>
+        <span id="reward" class="hud-value">-</span>
       </div>
     </div>
 
-    <button class="button" id="play">Play!</button>
-    <button class="button" id="stop">
-      <i class="fa-solid fa-stop"></i> Detener
-    </button>
+    <div class="machine-frame">
+      <div class="marquee-top">
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+      </div>
 
-    <div class="container" id="description">
-      Este minijuego simula una "Slot Machine", conocida en español como
-      "Tragaperras". Tu objetivo es conseguir tres caras de perro iguales para
-      ganar.
+      <div class="reel-container">
+        <div class="reel-window" id="boxOne">
+          <div class="reel-strip">
+            <div class="box-img transitionOne"></div>
+          </div>
+        </div>
+        <div class="reel-window" id="boxTwo">
+          <div class="reel-strip">
+            <div class="box-img transitionTwo"></div>
+          </div>
+        </div>
+        <div class="reel-window" id="boxThree">
+          <div class="reel-strip">
+            <div class="box-img transitionThree"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="marquee-bottom">
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+        <span class="marquee-light"></span>
+      </div>
+
+      <div class="controls">
+        <button class="btn-spin" id="play">
+          <i class="fa-solid fa-play"></i> SPIN
+        </button>
+        <button class="btn-stop" id="stop">
+          <i class="fa-solid fa-stop"></i> STOP
+        </button>
+      </div>
     </div>
 
-    <footer>
-      <p>2025</p>
+    <div class="info-panel" id="description">
+      <p>
+        <i class="fa-solid fa-dog"></i>
+        Tres perritos iguales = <strong>+100</strong>
+        <i class="fa-solid fa-dog"></i>
+      </p>
+      <p>
+        Dos perritos iguales = <strong>+50</strong>
+      </p>
+      <p>
+        Ninguno igual = <strong>-10</strong>
+      </p>
+    </div>
+
+    <div id="confetti-container"></div>
+
+    <footer class="footer">
+      <p>🐕 2025 — hechos con 🦥 y 🐾</p>
     </footer>
-
-    <script src="scripts/fondos.js"></script>
-    <script src="scripts/dotbackdropmenu.js"></script>
-    <script src="scripts/nova.js"></script>
+
   </body>
 </html>
